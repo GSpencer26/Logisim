@@ -8,10 +8,12 @@ class GridTouchListener {
 
     View view;
     Activity activity;
+    Grid grid;
 
-    GridTouchListener(ImageView v, Activity a){
+    GridTouchListener(ImageView v,Grid g, Activity a){
         view = v;
         activity = a;
+        grid = g;
     }
 
     void getGridTouch(final View button){
@@ -19,9 +21,9 @@ class GridTouchListener {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == motionEvent.ACTION_DOWN) {
-                    MainActivity.gm.createGate(button,motionEvent);
                     view.setOnTouchListener(null);
-                    System.out.println("button gridtouch");
+                    grid.addGate(Draw.closestBlock(motionEvent.getX()),Draw.closestBlock(motionEvent.getY()));
+                    MainActivity.button.unpress();
                     return true;
                 }
                 return false;

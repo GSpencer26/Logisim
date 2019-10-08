@@ -27,7 +27,7 @@ class Button {
             unpress();
         }
         press = v;
-        MainActivity.gm.getListener(press);
+        gtl.getGridTouch(press);
         scaleButton(.9f);
     }
 

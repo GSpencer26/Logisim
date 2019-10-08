@@ -19,12 +19,11 @@ class AbstractObject {
     }
 
     AbstractObject(float x, float y, Activity activity) {
-        iv = new ImageView(activity);
+        iv = new ImageView(Acti.get());
         int size = MainActivity.imageSize;
         iv.setX(x-size/2f);
         iv.setY(y-size/2f);
         iv.setLayoutParams(new LinearLayout.LayoutParams(size, size));
-        iv.setClickable(true);
         MainActivity.cl.addView(iv);
     }
 

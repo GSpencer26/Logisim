@@ -9,9 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends AppCompatActivity {
-    static Grid grid;
+    static Draw draw;
     static Button button;
-    static GateManager gm;
     static GridTouchListener gtl;
     static ConstraintLayout cl;
     static int imageSize = 100;
@@ -23,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
+        Acti.setActivity(this);
         display.getSize(size);
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         ImageView view =  findViewById(R.id.grid);
-        grid = new Grid(size,view);
-        gtl = new GridTouchListener(view, this);
+        draw = new Draw(size,view);
+        gtl = new GridTouchListener(view, draw.grid, this);
         button = new Button();
         cl = findViewById(R.id.GridLayout);
-        gm = new GateManager(this, cl);
     }
 
     public void buttonClick(View v){

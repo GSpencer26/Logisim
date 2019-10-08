@@ -1,57 +1,42 @@
-    package com.csc131.logisim;
+package com.csc131.logisim;
 
-    import android.graphics.Bitmap;
-    import android.graphics.Canvas;
-    import android.graphics.Color;
-    import android.graphics.Paint;
-    import android.graphics.Point;
-    import android.widget.ImageView;
+import android.app.Activity;
+import android.drm.DrmStore;
 
-    class Grid {
-        static private int blockSize;
-        private int gridWidth = 5;
-        private int gridHeight;
-        private Bitmap blankBitmap;
-        private Canvas canvas;
-        Paint paint;
-        private ImageView gridView;
+public class Grid {
 
-        Grid(Point size, ImageView view) {
-            gridView = view;
-            blockSize = size.x / gridWidth;
-            gridHeight = (int)(size.y / blockSize);
-            paint = new Paint();
-            blankBitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_8888);
-            canvas = new Canvas(blankBitmap);
-            draw();
-        }
-
-        void draw() {
-
-            drawGrid();
-        }
-
-
-        private void drawGrid(){
-            gridView.setImageBitmap(blankBitmap);
-
-            canvas.drawColor(Color.argb(255, 255, 255, 255));
-
-            paint.setColor(Color.argb(255, 0, 0, 0));
-
-            for (int i=0; i< gridWidth; i++){
-                for(int j=0; j< gridHeight; j++){
-                    drawCircle((int)(blockSize * i + blockSize/2), (int)(blockSize * j + blockSize/2));
-                }
-            }
-        }
-
-        void drawCircle(int x, int y) {
-            int drawSize = (int)(blockSize/8);
-            canvas.drawCircle(x,y, drawSize, paint);
-        }
-
-        static float getPos(float raw){
-            return (int)(raw/blockSize)*blockSize+blockSize/2;
-        }
+    private AbstractObject gates[][];
+    Activity activity;
+    Grid(int width, int height, Activity a){
+        gates = new AbstractObject[width][height];
+        activity = a;
     }
+
+    AbstractObject getGate(int x, int y){
+        return(gates[x][y]);
+    }
+
+    boolean addGate(int x, int y){
+        int blockX = Draw.blockNum(x);
+        int blockY = Draw.blockNum(y);
+        if(gates[blockX][blockY] == null) {
+            gates[blockX][blockY] = new AndGate(x, y, activity);
+            return true;
+        }
+        return false;
+    }
+
+    boolean removeGate(int x, int y){
+        if(gates[x][y]!=null){
+            gates[x][y]= null;
+            return true;
+        }
+        return false;
+    }
+
+    boolean moveGate(int x0, int y0, int x1, int y1){
+        return true;
+    }
+
+
+}
