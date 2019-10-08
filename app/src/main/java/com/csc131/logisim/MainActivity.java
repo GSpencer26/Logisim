@@ -10,8 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends AppCompatActivity {
     static Draw draw;
-    static Button button;
-    static GridTouchListener gtl;
     static ConstraintLayout cl;
     static int imageSize = 100;
 
@@ -27,14 +25,35 @@ public class MainActivity extends AppCompatActivity {
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         ImageView view =  findViewById(R.id.grid);
         draw = new Draw(size,view);
-        gtl = new GridTouchListener(view, draw.grid, this);
-        button = new Button();
         cl = findViewById(R.id.GridLayout);
     }
 
-    public void buttonClick(View v){
-        button.press(v);
+    public void andClick(View v){
+        
     }
+    public void orClick(View v){
+        
+    }
+    public void notClick(View v){
+        
+    }
+    public void ledClick(View v){
+        
+    }
+    public void toggleClick(View v){
+        
+    }
+    public void wireClick(View v){
+        
+    }
+    public void removeClick(View v){
+        
+    }
+    public void buttonClick(View v){
+        Button.press(v);
+    }
+
+
 
 
 

@@ -7,16 +7,7 @@ import android.widget.LinearLayout;
 class AbstractObject {
 
     final int maxInputs = 2;
-    int xPosition, yPosition;
     ImageView iv;
-
-    int getX(){
-        return xPosition;
-    }
-
-    int getY(){
-        return yPosition;
-    }
 
     AbstractObject(float x, float y, Activity activity) {
         iv = new ImageView(Acti.get());

@@ -1,44 +1,31 @@
 package com.csc131.logisim;
 
 import android.view.View;
-import android.widget.ImageView;
-import android.graphics.Matrix;
 class Button {
-    View press;
-    GridTouchListener gtl;
+    private static View press;
 
-    Button(){
-        gtl = MainActivity.gtl;
-    }
-
-    void rotate(ImageView v){
-        Matrix matrix = new Matrix();
-        v.setScaleType(ImageView.ScaleType.MATRIX);   //required
-        matrix.postRotate( 90, 0, 0);
-        v.setImageMatrix(matrix);
-    }
-
-    private void resetButton(){
+    static private void resetButton(){
         press.setOnTouchListener(null);
     }
 
-    void press(View v) {
+    static void press(View v) {
         if (press != null) {
             unpress();
         }
         press = v;
-        gtl.getGridTouch(press);
         scaleButton(.9f);
     }
 
-    void unpress() {
+    static void unpress() {
         resetButton();
         scaleButton();
     }
 
-    private void scaleButton(){ scaleButton(1f);}
+    static private void scaleButton(){
+        scaleButton(1f);
+    }
 
-    private void scaleButton(float size){
+    static private void scaleButton(float size){
         press.setScaleX(size);
         press.setScaleY(size);
     }
