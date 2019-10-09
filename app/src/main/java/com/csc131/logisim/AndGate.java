@@ -1,11 +1,9 @@
 package com.csc131.logisim;
 
-import android.app.Activity;
-
 class AndGate extends AbstractObject {
 
-    AndGate(int x, int y, Activity a){
-        super(x,y,a);
+    AndGate(int x, int y){
+        super(x,y);
         super.iv.setImageResource(R.drawable.andgate);
     }
 

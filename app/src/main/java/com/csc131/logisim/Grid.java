@@ -1,34 +1,39 @@
 package com.csc131.logisim;
 
 import android.app.Activity;
-import android.drm.DrmStore;
 
 public class Grid {
 
-    private AbstractObject gates[][];
-    Activity activity;
-    Grid(int width, int height, Activity a){
+    static private AbstractObject gates[][];
+    static Activity activity;
+    static void initalize(int width, int height, Activity a){
         gates = new AbstractObject[width][height];
         activity = a;
     }
 
-    AbstractObject getGate(int x, int y){
+    static AbstractObject getGate(int x, int y){
         return(gates[x][y]);
     }
 
-    boolean addGate(int x, int y){
-        int blockX = Draw.blockNum(x);
-        int blockY = Draw.blockNum(y);
+    static boolean addGate(int x, int y){
+        return addGate(new AbstractObject(x, y));
+    }
+
+    static boolean addGate(AbstractObject a){
+        int blockX = Draw.blockNum(a.xposition);
+        int blockY = Draw.blockNum(a.yposition);
         if(gates[blockX][blockY] == null) {
-            gates[blockX][blockY] = new AndGate(x, y, activity);
+            gates[blockX][blockY] = a;
             return true;
         }
         return false;
     }
 
-    boolean removeGate(int x, int y){
-        if(gates[x][y]!=null){
-            gates[x][y]= null;
+    static boolean removeGate(int x, int y){
+        int blockX = Draw.blockNum(x);
+        int blockY = Draw.blockNum(y);
+        if(gates[blockX][blockY]!=null){
+            gates[blockX][blockY]= null;
             return true;
         }
         return false;

@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     static Draw draw;
     static ConstraintLayout cl;
     static int imageSize = 100;
+    ImageView view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,38 +24,19 @@ public class MainActivity extends AppCompatActivity {
         Acti.setActivity(this);
         display.getSize(size);
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
-        ImageView view =  findViewById(R.id.grid);
+        view =  findViewById(R.id.grid);
         draw = new Draw(size,view);
         cl = findViewById(R.id.GridLayout);
+        view.setOnTouchListener(new GridTouchListener());
+
     }
 
-    public void andClick(View v){
-        
-    }
-    public void orClick(View v){
-        
-    }
-    public void notClick(View v){
-        
-    }
-    public void ledClick(View v){
-        
-    }
-    public void toggleClick(View v){
-        
-    }
-    public void wireClick(View v){
-        
-    }
-    public void removeClick(View v){
-        
+    public void placeGate(View v){
+        Button.press(v);
+
     }
     public void buttonClick(View v){
         Button.press(v);
     }
-
-
-
-
 
 }

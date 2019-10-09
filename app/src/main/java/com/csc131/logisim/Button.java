@@ -2,17 +2,17 @@ package com.csc131.logisim;
 
 import android.view.View;
 class Button {
-    private static View press;
+    static View pressed;
 
     static private void resetButton(){
-        press.setOnTouchListener(null);
+        pressed.setOnTouchListener(null);
     }
 
     static void press(View v) {
-        if (press != null) {
+        if (pressed != null) {
             unpress();
         }
-        press = v;
+        pressed = v;
         scaleButton(.9f);
     }
 
@@ -26,8 +26,8 @@ class Button {
     }
 
     static private void scaleButton(float size){
-        press.setScaleX(size);
-        press.setScaleY(size);
+        pressed.setScaleX(size);
+        pressed.setScaleY(size);
     }
 
 }

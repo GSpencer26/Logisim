@@ -26,7 +26,7 @@
             canvas = new Canvas(blankBitmap);
             drawGrid();
 
-            grid = new Grid(gridWidth, gridHeight, Acti.get());
+            Grid.initalize(gridWidth, gridHeight, Acti.get());
         }
 
 

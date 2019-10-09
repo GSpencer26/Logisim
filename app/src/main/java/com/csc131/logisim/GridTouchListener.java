@@ -5,10 +5,8 @@ import android.view.View;
 class GridTouchListener implements View.OnTouchListener {
 
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(motionEvent.getAction() == motionEvent.ACTION_DOWN) {
-            view.setOnTouchListener(null);
-            MainActivity.draw.grid.addGate(Draw.closestBlock(motionEvent.getX()),Draw.closestBlock(motionEvent.getY()));
-            Button.unpress();
+        if(motionEvent.getAction() == motionEvent.ACTION_DOWN && Button.pressed!=null) {
+            new ButtonAction(motionEvent);
             return true;
         }
         return false;
