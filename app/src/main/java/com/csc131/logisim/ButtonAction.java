@@ -30,6 +30,7 @@ public class ButtonAction {
             case "wire":
                 break;
             case "trash":
+                trash(closeX, closeY);
                 break;
         }
 

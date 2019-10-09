@@ -7,6 +7,8 @@ class AndGate extends AbstractObject {
         super.iv.setImageResource(R.drawable.andgate);
     }
 
+    boolean function() {
 
-
+        return false;
+    }
 }

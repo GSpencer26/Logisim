@@ -6,4 +6,9 @@ class OrGate extends AbstractObject {
         super.iv.setImageResource(R.drawable.orgate);
 
     }
+
+    @Override
+    boolean function() {
+        return false;
+    }
 }

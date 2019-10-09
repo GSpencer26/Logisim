@@ -105,17 +105,6 @@
                 app:srcCompat="@drawable/wireoff" />
 
             <ImageButton
-                android:id="@+id/connector"
-                android:tag="connector"
-                android:layout_width="@dimen/ButtonSize"
-                android:layout_height="@dimen/ButtonSize"
-                android:layout_weight="1"
-                android:onClick="buttonClick"
-                android:background="@drawable/border"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/connectoroff" />
-
-            <ImageButton
                 android:id="@+id/trash"
                 android:tag="trash"
                 android:layout_width="@dimen/ButtonSize"

@@ -5,4 +5,9 @@ class NotGate extends AbstractObject {
         super(x,y);
         super.iv.setImageResource(R.drawable.notgate);
     }
+
+    @Override
+    boolean function() {
+        return false;
+    }
 }

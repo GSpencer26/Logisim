@@ -15,15 +15,12 @@ public class Grid {
         return(gates[x][y]);
     }
 
-    static boolean addGate(int x, int y){
-        return addGate(new AbstractObject(x, y));
-    }
-
     static boolean addGate(AbstractObject a){
         int blockX = Draw.blockNum(a.xposition);
         int blockY = Draw.blockNum(a.yposition);
         if(gates[blockX][blockY] == null) {
             gates[blockX][blockY] = a;
+            MainActivity.cl.addView(a.iv);
             return true;
         }
         return false;
@@ -33,6 +30,7 @@ public class Grid {
         int blockX = Draw.blockNum(x);
         int blockY = Draw.blockNum(y);
         if(gates[blockX][blockY]!=null){
+            MainActivity.cl.removeView(gates[blockX][blockY].iv);
             gates[blockX][blockY]= null;
             return true;
         }
