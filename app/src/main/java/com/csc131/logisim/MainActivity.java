@@ -3,6 +3,7 @@ package com.csc131.logisim;
 import android.os.Bundle;
 import android.graphics.Point;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,15 @@ public class MainActivity extends AppCompatActivity {
         view =  findViewById(R.id.grid);
         draw = new Draw(size,view);
         cl = findViewById(R.id.GridLayout);
-        view.setOnTouchListener(new GridTouchListener());
+        view.setOnTouchListener(new View.OnTouchListener(){
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == motionEvent.ACTION_DOWN && Button.pressed!=null) {
+                    new ButtonAction(motionEvent);
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 

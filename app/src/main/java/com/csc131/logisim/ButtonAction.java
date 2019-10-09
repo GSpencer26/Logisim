@@ -28,6 +28,7 @@ public class ButtonAction {
                 toggle(closeX,closeY);
                 break;
             case "wire":
+
                 break;
             case "trash":
                 trash(closeX, closeY);
