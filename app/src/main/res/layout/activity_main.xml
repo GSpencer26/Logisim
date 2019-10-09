@@ -44,7 +44,7 @@
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="placeGate"
+                android:onClick="buttonClick"
                 android:background="@drawable/border"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/andgate" />
@@ -55,7 +55,7 @@
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="placeGate"
+                android:onClick="buttonClick"
                 android:background="@drawable/border"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/orgate" />
@@ -66,7 +66,7 @@
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="placeGate"
+                android:onClick="buttonClick"
                 android:background="@drawable/border"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/notgate" />

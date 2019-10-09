@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     static Draw draw;
     static ConstraintLayout cl;
     static int imageSize = 100;
-    ImageView view;
+    static ImageView grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +25,13 @@ public class MainActivity extends AppCompatActivity {
         Acti.setActivity(this);
         display.getSize(size);
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
-        view =  findViewById(R.id.grid);
-        draw = new Draw(size,view);
+        grid =  findViewById(R.id.grid);
+        draw = new Draw(size, grid);
         cl = findViewById(R.id.GridLayout);
-        view.setOnTouchListener(new View.OnTouchListener(){
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction() == motionEvent.ACTION_DOWN && Button.pressed!=null) {
-                    new ButtonAction(motionEvent);
-                    return true;
-                }
-                return false;
-            }
-        });
+        grid.setOnTouchListener(new GridListener());
 
     }
 
-    public void placeGate(View v){
-        Button.press(v);
-
-    }
     public void buttonClick(View v){
         Button.press(v);
     }

@@ -17,6 +17,9 @@ class Lightbulb extends AbstractObject{
     }
 
     boolean function() {
-        return false;
+        if(inputs.size()==0){
+            return false;
+        }
+        return inputs.get(0).function();
     }
 }

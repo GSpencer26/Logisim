@@ -8,6 +8,7 @@ class AndGate extends AbstractObject {
     }
 
     boolean function() {
+        boolean bool = false;
 
         return false;
     }

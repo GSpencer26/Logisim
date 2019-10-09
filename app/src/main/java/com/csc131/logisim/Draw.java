@@ -15,7 +15,6 @@
         private Canvas canvas;
         Paint paint;
         private ImageView gridView;
-        Grid grid;
 
         Draw(Point size, ImageView view) {
             gridView = view;
@@ -48,6 +47,27 @@
         void drawCircle(int x, int y) {
             int drawSize = (int)(blockSize/8);
             canvas.drawCircle(x,y, drawSize, paint);
+        }
+
+        void drawWire(int x0, int y0, int x1, int y1){
+            if (x0>x1 && y0>y1){
+                int tmp = x1;
+                x1 = x0;
+                x0 = tmp;
+                tmp = y1;
+                y1 = y0;
+                y0 = tmp;
+            }
+
+
+            paint.setStrokeWidth(10);
+            paint.setColor(Color.argb(255, 15, 15, 15));
+            int mid = (x0+x1)/2;
+            canvas.drawLine(x0,y0,mid,y0,paint);
+            canvas.drawLine(mid,y1,x1,y1,paint);
+            canvas.drawLine(mid,y0,mid,y1,paint);
+            System.out.println("wireplaced");
+
         }
 
         static int closestBlock(float raw){
