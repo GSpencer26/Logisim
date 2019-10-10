@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="ImageSize">100</dimen>
     <dimen name="ButtonSize">250px</dimen>
+    <dimen name="ResetSize">180px</dimen>
 </resources>

@@ -4,9 +4,9 @@ import android.view.View;
 
 class Toggle extends AbstractObject {
 
-    boolean state = false;
+    boolean state;
 
-    public Toggle(int x, int y) {
+    public Toggle(int x, int y, boolean s) {
         super(x,y);
         super.iv.setImageResource(R.drawable.toggleswitchoff);
         super.iv.setOnClickListener(new View.OnClickListener(){
@@ -14,6 +14,7 @@ class Toggle extends AbstractObject {
                 toggle();
             }
         });
+        state = s;
     }
 
     @Override

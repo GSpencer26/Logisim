@@ -12,7 +12,7 @@ abstract class AbstractObject {
     ImageView iv;
 
     AbstractObject(int x, int y) {
-        iv = new ImageView(Acti.get());
+        iv = new ImageView(MainActivity.activity);
         inputs = new ArrayList<>();
         int size = MainActivity.imageSize;
         xposition = x;

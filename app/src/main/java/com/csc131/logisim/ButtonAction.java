@@ -24,8 +24,11 @@ public class ButtonAction {
             case "led":
                 led(closeX,closeY);
                 break;
-            case "toggle":
-                toggle(closeX,closeY);
+            case "toggleoff":
+                Grid.addGate(new Toggle(closeX,closeY,false));
+                break;
+            case "toggleon":
+                Grid.addGate(new Toggle(closeX,closeY,true));
                 break;
             case "wire":
                 MainActivity.grid.setOnTouchListener(new View.OnTouchListener() {
@@ -47,6 +50,14 @@ public class ButtonAction {
             case "trash":
                 trash(closeX, closeY);
                 break;
+            case "save":
+                break;
+            case "aletter":
+                break;
+            case "bletter":
+                break;
+            case "cletter":
+                break;
         }
 
     }
@@ -64,7 +75,6 @@ public class ButtonAction {
         Grid.addGate(new Lightbulb(x,y));
     }
     void toggle(int x, int y){
-        Grid.addGate(new Toggle(x,y));
     }
     void wire(int x, int y, int x2, int y2){
         MainActivity.draw.drawWire(x,y,x2,y2);

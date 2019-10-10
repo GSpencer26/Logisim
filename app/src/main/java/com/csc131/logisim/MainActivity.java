@@ -1,5 +1,6 @@
 package com.csc131.logisim;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.graphics.Point;
 import android.view.Display;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     static ConstraintLayout cl;
     static int imageSize = 100;
     static ImageView grid;
+    static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
-        Acti.setActivity(this);
+        activity = this;
         display.getSize(size);
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         grid =  findViewById(R.id.grid);
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonClick(View v){
         Button.press(v);
+    }
+
+    public void reset(View v){
     }
 
 }
