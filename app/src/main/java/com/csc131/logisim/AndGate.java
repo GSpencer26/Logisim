@@ -8,8 +8,15 @@ class AndGate extends AbstractObject {
     }
 
     boolean function() {
-        boolean bool = false;
-
-        return false;
+        drawWires();
+        if(inputs.size()==0) return false;
+        for(int i=0; i<inputs.size(); i++){
+            if(!inputs.get(i).function()){
+                return false;
+            }
+        }
+        return true;
     }
+
+
 }

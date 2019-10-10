@@ -84,8 +84,8 @@
                 app:srcCompat="@drawable/lightbulboff" />
 
             <ImageButton
-                android:id="@+id/toggleoff"
-                android:tag="toggleoff"
+                android:id="@+id/toggle"
+                android:tag="toggle"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
@@ -93,17 +93,6 @@
                 android:background="@drawable/border"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/toggleswitchoff" />
-            <ImageButton
-                android:id="@+id/toggleon"
-                android:tag="toggleon"
-                android:layout_width="@dimen/ButtonSize"
-                android:layout_height="@dimen/ButtonSize"
-                android:layout_weight="1"
-                android:onClick="buttonClick"
-                android:background="@drawable/border"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/toggleswitchon" />
-
             <ImageButton
                 android:id="@+id/wire"
                 android:tag="wire"

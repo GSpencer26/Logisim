@@ -4,14 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.graphics.Point;
 import android.view.Display;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends AppCompatActivity {
-    static Draw draw;
+    static Drawer draw;
     static ConstraintLayout cl;
     static int imageSize = 100;
     static ImageView grid;
@@ -28,17 +27,13 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         grid =  findViewById(R.id.grid);
-        draw = new Draw(size, grid);
+        Drawer.set(size, grid);
+        Drawer.draw();
         cl = findViewById(R.id.GridLayout);
-        grid.setOnTouchListener(new GridListener());
-
     }
 
     public void buttonClick(View v){
         Button.press(v);
-    }
-
-    public void reset(View v){
     }
 
 }

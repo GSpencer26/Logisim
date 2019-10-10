@@ -3,42 +3,39 @@ package com.csc131.logisim;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class ButtonAction {
+class ButtonAction {
 
-    ButtonAction (MotionEvent motionEvent){
-
-        View pressed = Button.pressed;
-        final int closeX = Draw.closestBlock(motionEvent.getX());
-        final int closeY = Draw.closestBlock(motionEvent.getY());
-
+    static void action(MotionEvent motionEvent){
+        final View pressed = Button.pressed;
+        final int x = Drawer.closestBlock(motionEvent.getX());
+        final int y = Drawer.closestBlock(motionEvent.getY());
         switch(pressed.getTag().toString()){
             case "and":
-                and(closeX, closeY);
+                Grid.addGate(new AndGate(x,y));
                 break;
             case "or":
-                or(closeX, closeY);
+                Grid.addGate(new OrGate(x,y));
                 break;
             case "not":
-                not(closeX,closeY);
+                Grid.addGate(new NotGate(x,y));
                 break;
             case "led":
-                led(closeX,closeY);
+                Grid.addGate(new Lightbulb(x,y));
                 break;
-            case "toggleoff":
-                Grid.addGate(new Toggle(closeX,closeY,false));
-                break;
-            case "toggleon":
-                Grid.addGate(new Toggle(closeX,closeY,true));
+            case "toggle":
+                Grid.addGate(new Toggle(x,y));
                 break;
             case "wire":
                 MainActivity.grid.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent2) {
-                        if(motionEvent2.getAction() == motionEvent2.ACTION_DOWN && Grid.isGate(Draw.closestBlock(motionEvent2.getX()),
-                                Draw.closestBlock(motionEvent2.getY()))){
-                            int closeX2 = Draw.closestBlock(motionEvent2.getX());
-                            int closeY2 = Draw.closestBlock(motionEvent2.getY());
-                            wire(closeX, closeY, closeX2, closeY2);
+                        if(motionEvent2.getAction() == motionEvent2.ACTION_DOWN && Grid.isGate(Drawer.closestBlock(motionEvent2.getX()),
+                                Drawer.closestBlock(motionEvent2.getY()))){
+                            int x2 = Drawer.closestBlock(motionEvent2.getX());
+                            int y2 = Drawer.closestBlock(motionEvent2.getY());
+                            if(x==x2 && y==y2) return true;
+                            AbstractObject.connectGates(Grid.getGate(Drawer.blockNum(x), Drawer.blockNum(y)),
+                                    Grid.getGate(Drawer.blockNum(x2), Drawer.blockNum(y2)));
                             MainActivity.grid.setOnTouchListener(new GridListener());
                             Button.unpress();
                             return true;
@@ -48,7 +45,7 @@ public class ButtonAction {
                 });
                 break;
             case "trash":
-                trash(closeX, closeY);
+                Grid.removeGate(x,y);
                 break;
             case "save":
                 break;
@@ -58,30 +55,9 @@ public class ButtonAction {
                 break;
             case "cletter":
                 break;
+            default:
+
         }
 
-    }
-
-    void and(int x, int y){
-        Grid.addGate(new AndGate(x,y));
-    }
-    void or(int x, int y){
-        Grid.addGate(new OrGate(x,y));
-    }
-    void not(int x, int y){
-        Grid.addGate(new NotGate(x,y));
-    }
-    void led(int x, int y){
-        Grid.addGate(new Lightbulb(x,y));
-    }
-    void toggle(int x, int y){
-    }
-    void wire(int x, int y, int x2, int y2){
-        MainActivity.draw.drawWire(x,y,x2,y2);
-        AbstractObject.connectGates(Grid.getGate(Draw.blockNum(x),Draw.blockNum(y)),
-                Grid.getGate(Draw.blockNum(x2),Draw.blockNum(y2)));
-    }
-    void trash(int x, int y){
-        Grid.removeGate(x,y);
     }
 }

@@ -6,15 +6,18 @@ class Toggle extends AbstractObject {
 
     boolean state;
 
-    public Toggle(int x, int y, boolean s) {
+    public Toggle(int x, int y) {
         super(x,y);
-        super.iv.setImageResource(R.drawable.toggleswitchoff);
+        state = false;
+        if(state)
+            super.iv.setImageResource(R.drawable.toggleswitchon);
+        else
+            super.iv.setImageResource(R.drawable.toggleswitchoff);
         super.iv.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 toggle();
             }
         });
-        state = s;
     }
 
     @Override
@@ -28,5 +31,7 @@ class Toggle extends AbstractObject {
             super.iv.setImageResource(R.drawable.toggleswitchon);
         else
             super.iv.setImageResource(R.drawable.toggleswitchoff);
+        Lightbulb.update();
     }
+
 }

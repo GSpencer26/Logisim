@@ -14,6 +14,7 @@ class Button {
         }
         pressed = v;
         scaleButton(.9f);
+        MainActivity.grid.setOnTouchListener(new GridListener());
     }
 
     static void unpress() {

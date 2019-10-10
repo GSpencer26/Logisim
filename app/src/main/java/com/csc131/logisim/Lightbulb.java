@@ -1,22 +1,29 @@
 package com.csc131.logisim;
 
+import java.util.ArrayList;
+
 class Lightbulb extends AbstractObject{
 
+    static ArrayList<Lightbulb> leds = new ArrayList<>();
     boolean state = false;
 
     Lightbulb(int x, int y){
         super(x,y);
+        leds.add(this);
         update();
     }
 
-    void update(){
-        if(state==false)
-            super.iv.setImageResource(R.drawable.lightbulboff);
-        else
-            super.iv.setImageResource(R.drawable.lightbulbon);
+    static void update(){
+        for(int i=0; i<leds.size(); i++) {
+            if (leds.get(i).function() == false)
+                leds.get(i).iv.setImageResource(R.drawable.lightbulboff);
+            else
+                leds.get(i).iv.setImageResource(R.drawable.lightbulbon);
+        }
     }
 
     boolean function() {
+        drawWires();
         if(inputs.size()==0){
             return false;
         }
