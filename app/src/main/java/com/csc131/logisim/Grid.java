@@ -3,11 +3,12 @@ package com.csc131.logisim;
 import android.app.Activity;
 
 import java.lang.reflect.Array;
+import java.net.ConnectException;
 import java.util.ArrayList;
 
 public class Grid {
 
-    static private AbstractObject[][] gates;
+    static private ArrayList<AbstractObject> gates;
     static Activity activity;
     static int width, height;
 
@@ -15,68 +16,56 @@ public class Grid {
         width = w;
         height = h;
         activity = a;
-        gates = new AbstractObject[width][height];
+        gates = new ArrayList<>();
     }
 
     static AbstractObject getGate(int x, int y) {
-        return (gates[x][y]);
+        int gateNum = isGate(x,y);
+        if(gateNum>=0){
+            return gates.get(gateNum);
+        }
+        return null;
     }
 
-    static boolean isGate(int x, int y) {
-        return (gates[x][y]!= null);
+    static int isGate(int x, int y) {
+        for(int i=0; i<gates.size(); i++){
+            if(gates.get(i).xposition == x && gates.get(i).yposition == y)
+                return i;
+        }
+        return -1;
     }
 
     static void addGate(AbstractObject a) {
-        int blockX = Drawer.blockNum(a.xposition);
-        int blockY = Drawer.blockNum(a.yposition);
-        if (!isGate(blockX, blockY)) {
-            gates[blockX][blockY] = a;
+        int x = Drawer.closestBlock(a.xposition);
+        int y = Drawer.closestBlock(a.yposition);
+        int gateNum = isGate(x,y);
+        if (gateNum==-1) {
+            gates.add(a);
             MainActivity.cl.addView(a.iv);
         }
     }
 
     static void removeGate(int x, int y) {
-        int blockX = Drawer.blockNum(x);
-        int blockY = Drawer.blockNum(y);
-        if(gates[blockX][blockY]!=null) {
-            MainActivity.cl.removeView(gates[blockX][blockY].iv);
-            gates[blockX][blockY] = null;
+        int gateNum = isGate(x,y);
+        if(gateNum>=0) {
+            MainActivity.cl.removeView(gates.get(gateNum).iv);
+            gates.remove(gateNum);
             Drawer.draw();
             Lightbulb.update();
+        }
+        for(int i=0; i<gates.size(); i++){
+            for(int j=0; j<gates.get(i).inputs.size(); j++){
+                AbstractObject.connectGates(gates.get(i),gates.get(i).inputs.get(j));
+            }
         }
     }
 
     static void resetGrid(){
-        for(AbstractObject[] i : gates){
-            for(AbstractObject j : i){
-                if(j != null) {
-                    int x = Drawer.blockNum(j.xposition);
-                    int y = Drawer.blockNum(j.yposition);
-                    if (isGate(x,y)) {
-                        MainActivity.cl.removeView(j.iv);
-                    }
-                }
-            }
+        for(int i=0; i<gates.size(); i++){
+            MainActivity.cl.removeView(gates.get(i).iv);
         }
-        gates = new AbstractObject[width][height];
+        gates = new ArrayList<>();
         Drawer.draw();
     }
-
-    static void findWires(){
-        for(AbstractObject[] i : gates){
-            for(AbstractObject j : i){
-                if(j != null) {
-                    int x = Drawer.blockNum(j.xposition);
-                    int y = Drawer.blockNum(j.yposition);
-                    if (isGate(x,y)) {
-                        for(int k=0; k<j.inputs.size();k++){
-                            Drawer.drawWire(j.xposition,j.yposition,j.inputs.get(k).xposition, j.inputs.get(k).yposition);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }
 

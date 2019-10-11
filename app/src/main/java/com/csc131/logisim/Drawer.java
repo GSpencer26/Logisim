@@ -53,21 +53,28 @@
             canvas.drawCircle(x, y, drawSize, paint);
         }
 
-        static void drawWire(int x0, int y0, int x1, int y1) {
-            if (x0 > x1 && y0 > y1) {
-                int tmp = x1;
-                x1 = x0;
-                x0 = tmp;
-                tmp = y1;
-                y1 = y0;
-                y0 = tmp;
+        static void drawWire(AbstractObject a, AbstractObject b) {
+            int ax = a.xposition;
+            int ay = a.yposition;
+            int bx = b.xposition;
+            int by = b.yposition;
+            drawWire(ax,ay,bx,by);
+        }
+        static void drawWire(int ax, int ay, int bx, int by) {
+            if (ax > bx && ay > by) {
+                int tmp = bx;
+                bx = ax;
+                ax = tmp;
+                tmp = by;
+                by = ay;
+                ay = tmp;
             }
             paint.setStrokeWidth(10);
-            paint.setColor(Color.argb(255, 15, 15, 15));
-            int mid = (x0 + x1) / 2;
-            canvas.drawLine(x0, y0, mid, y0, paint);
-            canvas.drawLine(mid, y1, x1, y1, paint);
-            canvas.drawLine(mid, y0, mid, y1, paint);
+            paint.setColor(Color.argb(255, 0, 0, 0));
+            int mid = (ax + bx) / 2;
+            canvas.drawLine(ax, ay, mid, ay, paint);
+            canvas.drawLine(mid, by, bx, by, paint);
+            canvas.drawLine(mid, ay, mid, by, paint);
         }
 
         static int closestBlock(float raw) {
