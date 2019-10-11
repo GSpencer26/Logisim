@@ -5,7 +5,6 @@ import java.util.ArrayList;
 class Lightbulb extends AbstractObject{
 
     static ArrayList<Lightbulb> leds = new ArrayList<>();
-    boolean state = false;
 
     Lightbulb(int x, int y){
         super(x,y);
@@ -15,7 +14,7 @@ class Lightbulb extends AbstractObject{
 
     static void update(){
         for(int i=0; i<leds.size(); i++) {
-            if (leds.get(i).function() == false)
+            if (!leds.get(i).function())
                 leds.get(i).iv.setImageResource(R.drawable.lightbulboff);
             else
                 leds.get(i).iv.setImageResource(R.drawable.lightbulbon);
@@ -23,7 +22,6 @@ class Lightbulb extends AbstractObject{
     }
 
     boolean function() {
-        drawWires();
         if(inputs.size()==0){
             return false;
         }

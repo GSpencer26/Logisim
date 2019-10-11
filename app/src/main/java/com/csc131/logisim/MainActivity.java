@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends AppCompatActivity {
-    static Drawer draw;
     static ConstraintLayout cl;
     static int imageSize = 100;
     static ImageView grid;
@@ -24,16 +23,19 @@ public class MainActivity extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         activity = this;
+        cl = findViewById(R.id.GridLayout);
         display.getSize(size);
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         grid =  findViewById(R.id.grid);
         Drawer.set(size, grid);
         Drawer.draw();
-        cl = findViewById(R.id.GridLayout);
     }
 
     public void buttonClick(View v){
         Button.press(v);
     }
 
+    public void reset(View v) {
+        Grid.resetGrid();
+    }
 }

@@ -9,7 +9,6 @@ class OrGate extends AbstractObject {
 
     @Override
     boolean function() {
-        drawWires();
         for(int i=0; i<inputs.size(); i++){
             if(inputs.get(i).function()){
                 return true;

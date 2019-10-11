@@ -8,7 +8,6 @@ class NotGate extends AbstractObject {
 
     @Override
     boolean function() {
-        drawWires();
         if(inputs.size()>0){
             return !inputs.get(0).function();
         }

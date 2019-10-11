@@ -29,11 +29,12 @@ class ButtonAction {
                 MainActivity.grid.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent2) {
-                        if(motionEvent2.getAction() == motionEvent2.ACTION_DOWN && Grid.isGate(Drawer.closestBlock(motionEvent2.getX()),
-                                Drawer.closestBlock(motionEvent2.getY()))){
-                            int x2 = Drawer.closestBlock(motionEvent2.getX());
-                            int y2 = Drawer.closestBlock(motionEvent2.getY());
+                        int x2 = Drawer.closestBlock(motionEvent2.getX());
+                        int y2 = Drawer.closestBlock(motionEvent2.getY());
+                        if(motionEvent2.getAction() == motionEvent2.ACTION_DOWN && Grid.isGate(Drawer.blockNum(x2),
+                                Drawer.blockNum(y2))){
                             if(x==x2 && y==y2) return true;
+                            Drawer.drawWire(x,y,x2,y2);
                             AbstractObject.connectGates(Grid.getGate(Drawer.blockNum(x), Drawer.blockNum(y)),
                                     Grid.getGate(Drawer.blockNum(x2), Drawer.blockNum(y2)));
                             MainActivity.grid.setOnTouchListener(new GridListener());
@@ -55,9 +56,6 @@ class ButtonAction {
                 break;
             case "cletter":
                 break;
-            default:
-
         }
-
     }
 }

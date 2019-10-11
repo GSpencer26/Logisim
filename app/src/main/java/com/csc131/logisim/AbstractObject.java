@@ -24,12 +24,6 @@ abstract class AbstractObject {
 
     abstract boolean function();
 
-    void drawWires(){
-        for(int i=0; i<inputs.size();i++){
-            Drawer.drawWire(xposition,yposition,inputs.get(i).xposition, inputs.get(i).yposition);
-        }
-    }
-
     static void connectGates(AbstractObject a, AbstractObject b){
         if(!b.inputs.contains(a)) {
             b.inputs.add(a);
