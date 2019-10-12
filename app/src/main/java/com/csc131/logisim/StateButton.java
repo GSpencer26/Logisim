@@ -14,11 +14,13 @@ class StateButton extends Butt {
         super.setOnClickListener(new ButtonListener());
     }
     public void action(){
-        if(Button.pressed == null){
-            Grid.loadState(state);
-        } else {
+        if(Button.pressed.getTag().toString().equals("save")){
             state = Grid.setState();
             Button.unpress();
+            MainActivity.vibrate(100);
+        } else {
+            Grid.loadState(state);
+            MainActivity.vibrate(200);
         }
     }
 }
