@@ -16,4 +16,8 @@ class OrGate extends AbstractObject {
         }
         return false;
     }
+
+    void gridAction(){
+        super.rotate();
+    }
 }

@@ -1,23 +1,13 @@
 package com.csc131.logisim;
 
-import android.view.View;
-
 class Toggle extends AbstractObject {
 
     boolean state;
 
     public Toggle(int x, int y) {
         super(x,y);
-        state = false;
-        if(state)
-            super.iv.setImageResource(R.drawable.toggleswitchon);
-        else
-            super.iv.setImageResource(R.drawable.toggleswitchoff);
-        super.iv.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                toggle();
-            }
-        });
+        state = true;
+        toggle();
     }
 
     @Override
@@ -32,6 +22,10 @@ class Toggle extends AbstractObject {
         else
             super.iv.setImageResource(R.drawable.toggleswitchoff);
         Lightbulb.update();
+    }
+
+    void gridAction(){
+        toggle();
     }
 
 }

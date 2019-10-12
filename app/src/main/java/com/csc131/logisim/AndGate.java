@@ -17,5 +17,8 @@ class AndGate extends AbstractObject {
         return true;
     }
 
+    void gridAction(){
+        super.rotate();
+    }
 
 }

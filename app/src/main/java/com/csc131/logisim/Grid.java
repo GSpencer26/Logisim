@@ -3,6 +3,7 @@ package com.csc131.logisim;
 import android.app.Activity;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
 import java.net.ConnectException;
 import java.util.ArrayList;
 
@@ -20,9 +21,13 @@ public class Grid {
     }
 
     static AbstractObject getGate(int x, int y) {
-        int gateNum = isGate(x,y);
-        if(gateNum>=0){
-            return gates.get(gateNum);
+        int gatePosition = isGate(x,y);
+        return getGate(gatePosition);
+    }
+
+    static AbstractObject getGate(int gatePosition) {
+        if(gatePosition>=0){
+            return gates.get(gatePosition);
         }
         return null;
     }

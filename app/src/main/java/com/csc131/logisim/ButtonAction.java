@@ -9,6 +9,7 @@ class ButtonAction {
         final View pressed = Button.pressed;
         final int x = Drawer.closestBlock(motionEvent.getX());
         final int y = Drawer.closestBlock(motionEvent.getY());
+        MainActivity.vibrate(50);
         switch(pressed.getTag().toString()){
             case "and":
                 Grid.addGate(new AndGate(x,y));
@@ -37,6 +38,7 @@ class ButtonAction {
                         if(motionEvent2.getAction() == motionEvent2.ACTION_DOWN
                             && Grid.isGate(Drawer.closestBlock(x2), Drawer.closestBlock(y2))>=0){
                             if(x==x2 && y==y2) return true;
+                            MainActivity.vibrate(50);
                             Drawer.drawWire(x,y,x2,y2);
                             AbstractObject.connectGates(Grid.getGate(x,y),
                                     Grid.getGate(x2,y2));
@@ -47,7 +49,7 @@ class ButtonAction {
                         return false;
                     }
                 });
-                break;
+                return;
             case "trash":
                 Grid.removeGate(x,y);
                 break;

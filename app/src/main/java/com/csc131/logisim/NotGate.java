@@ -14,4 +14,8 @@ class NotGate extends AbstractObject {
         return false;
     }
 
+    void gridAction(){
+        super.rotate();
+    }
+
 }

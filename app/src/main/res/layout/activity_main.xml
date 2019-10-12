@@ -14,7 +14,7 @@
         android:id="@+id/GridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,7 +27,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ButtonSize"
         android:overScrollMode="always"
@@ -144,7 +144,7 @@
                 android:background="@drawable/border"
                 android:onClick="buttonClick"
                 android:scaleType="fitCenter"
-                android:tag="aletter"
+                android:tag="state"
                 app:srcCompat="@drawable/aletter" />
 
             <ImageButton
@@ -153,7 +153,7 @@
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
                 android:background="@drawable/border"
-                android:onClick="buttonClick"
+                android:onClick="state"
                 android:scaleType="fitCenter"
                 android:tag="bletter"
                 app:srcCompat="@drawable/bletter" />
@@ -164,7 +164,7 @@
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
                 android:background="@drawable/border"
-                android:onClick="buttonClick"
+                android:onClick="state"
                 android:scaleType="fitCenter"
                 android:tag="cletter"
                 app:srcCompat="@drawable/cletter" />

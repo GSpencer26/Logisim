@@ -27,4 +27,7 @@ class Lightbulb extends AbstractObject{
         }
         return inputs.get(0).function();
     }
+
+    void gridAction(){
+    }
 }

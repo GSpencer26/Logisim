@@ -22,6 +22,7 @@ abstract class AbstractObject {
         iv.setLayoutParams(new LinearLayout.LayoutParams(size, size));
     }
 
+    abstract void gridAction();
     abstract boolean function();
 
     static void connectGates(AbstractObject a, AbstractObject b){
@@ -30,6 +31,11 @@ abstract class AbstractObject {
             Lightbulb.update();
         }
 
+    }
+
+    void rotate(){
+        float rotation = iv.getRotation();
+        iv.setRotation((rotation+90)%360);
     }
 
 
