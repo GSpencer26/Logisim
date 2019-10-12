@@ -13,4 +13,6 @@ abstract class Butt extends ImageButton {
 
     }
 
+    abstract void action();
+
 }

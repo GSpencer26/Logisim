@@ -11,12 +11,7 @@ class StateButton extends Butt {
     StateButton(int drawable){
         state = new ArrayList<>();
         super.setImageResource(drawable);
-        super.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                StateButton state = (StateButton) v;
-                state.action();
-            }
-        });
+        super.setOnClickListener(new ButtonListener());
     }
     public void action(){
         if(Button.pressed == null){

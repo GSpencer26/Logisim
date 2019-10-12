@@ -7,4 +7,8 @@ class Gate<E> extends Butt{
 
     }
 
+    void action(){
+
+    }
+
 }
