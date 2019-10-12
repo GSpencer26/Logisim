@@ -60,5 +60,6 @@ class ButtonAction {
             case "cletter":
                 break;
         }
+        Button.unpress();
     }
 }

@@ -6,6 +6,7 @@ class Button {
 
     static private void resetButton(){
         pressed.setOnTouchListener(null);
+        pressed = null;
     }
 
     static void press(View v) {
@@ -18,8 +19,8 @@ class Button {
     }
 
     static void unpress() {
-        resetButton();
         scaleButton();
+        resetButton();
     }
 
     static private void scaleButton(){
