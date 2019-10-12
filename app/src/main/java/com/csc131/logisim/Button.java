@@ -1,35 +1,21 @@
 package com.csc131.logisim;
 
-import android.view.View;
-class Button {
-    static View pressed;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 
-    static private void resetButton(){
-        pressed.setOnTouchListener(null);
-        pressed = null;
+abstract class Button extends ImageButton {
+
+    Button(int drawable, String tag){
+        super(MainActivity.activity);
+        super.setImageResource(drawable);
+        super.setTag(tag);
+        super.setLayoutParams(new ViewGroup.LayoutParams(250, 250));
+        super.setScaleType(ScaleType.FIT_CENTER);
+        super.setBackgroundResource(R.drawable.border);
+        super.setOnClickListener(new ButtonListener());
+
     }
 
-    static void press(View v) {
-        if (pressed != null) {
-            unpress();
-        }
-        pressed = v;
-        scaleButton(.9f);
-        MainActivity.grid.setOnTouchListener(new GridListener());
-    }
-
-    static void unpress() {
-        scaleButton();
-        resetButton();
-    }
-
-    static private void scaleButton(){
-        scaleButton(1f);
-    }
-
-    static private void scaleButton(float size){
-        pressed.setScaleX(size);
-        pressed.setScaleY(size);
-    }
+    abstract void action();
 
 }

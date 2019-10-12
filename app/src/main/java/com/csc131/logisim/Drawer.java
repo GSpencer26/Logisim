@@ -70,7 +70,7 @@
                 ay = tmp;
             }
             paint.setStrokeWidth(10);
-            paint.setColor(Color.argb(255, 0, 0, 0));
+            paint.setColor(Color.argb(255, (int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
             int mid = (ax + bx) / 2;
             canvas.drawLine(ax, ay, mid, ay, paint);
             canvas.drawLine(mid, by, bx, by, paint);

@@ -6,8 +6,6 @@ import android.graphics.Point;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.Display;
-import android.view.View;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -19,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     static int imageSize = 100;
     static ImageView grid;
     static Activity activity;
-    static Vibrator vibrator;
+    private static Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +38,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buttonClick(View v){
-        Button.press(v);
-        vibrate(50);
-    }
-
-    public void reset(View v) {
-        vibrate(200);
-        Grid.resetGrid();
-    }
-
     public void addButtons(){
         LinearLayout toolbar = findViewById(R.id.toolbar);
-        toolbar.addView(new StateButton(R.drawable.aletter));
-        toolbar.addView(new StateButton(R.drawable.bletter));
-        toolbar.addView(new StateButton(R.drawable.cletter));
+        toolbar.addView(new ResetButton(R.drawable.reset,"reset"));
+        toolbar.addView(new GateButton<AndGate>(R.drawable.andgate,"and"));
+        toolbar.addView(new GateButton<OrGate>(R.drawable.orgate,"or"));
+        toolbar.addView(new GateButton<NotGate>(R.drawable.notgate,"not"));
+        toolbar.addView(new GateButton<Toggle>(R.drawable.toggleswitchoff,"toggle"));
+        toolbar.addView(new GateButton<Lightbulb>(R.drawable.lightbulboff,"led"));
+        toolbar.addView(new WireButton(R.drawable.wireoff,"wire"));
+        toolbar.addView(new TrashButton(R.drawable.trash, "trash"));
+        toolbar.addView(new SaveButton(R.drawable.save, "save"));
+        toolbar.addView(new StateButton(R.drawable.aletter,"a"));
+        toolbar.addView(new StateButton(R.drawable.bletter,"b"));
+        toolbar.addView(new StateButton(R.drawable.cletter,"c"));
+
     }
 
     static public void vibrate(long duration){

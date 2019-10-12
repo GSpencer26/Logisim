@@ -7,7 +7,7 @@ class GridListener implements View.OnTouchListener {
 
     public boolean onTouch(View view, MotionEvent motionEvent) {
     if(motionEvent.getAction() == motionEvent.ACTION_DOWN) {
-        if(Button.pressed==null){
+        if(PressedButton.pressed==null){
             GridAction.action(motionEvent);
         }else {
             ButtonAction.action(motionEvent);

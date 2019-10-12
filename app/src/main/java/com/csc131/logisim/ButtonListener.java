@@ -5,7 +5,7 @@ import android.view.View;
 public class ButtonListener implements View.OnClickListener {
 
     public void onClick(View v){
-        Butt button = (Butt) v;
+        Button button = (Button) v;
         button.action();
     }
 

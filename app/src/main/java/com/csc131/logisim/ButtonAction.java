@@ -6,7 +6,7 @@ import android.view.View;
 class ButtonAction {
 
     static void action(MotionEvent motionEvent){
-        final View pressed = Button.pressed;
+        final Button pressed = PressedButton.pressed;
         final int x = Drawer.closestBlock(motionEvent.getX());
         final int y = Drawer.closestBlock(motionEvent.getY());
         MainActivity.vibrate(50);
@@ -43,7 +43,7 @@ class ButtonAction {
                             AbstractObject.connectGates(Grid.getGate(x,y),
                                     Grid.getGate(x2,y2));
                             MainActivity.grid.setOnTouchListener(new GridListener());
-                            Button.unpress();
+                            PressedButton.unpress();
                             return true;
                         }
                         return false;
@@ -56,6 +56,6 @@ class ButtonAction {
             case "save":
                 break;
         }
-        Button.unpress();
+        PressedButton.unpress();
     }
 }

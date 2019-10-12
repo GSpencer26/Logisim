@@ -1,22 +1,19 @@
 package com.csc131.logisim;
 
-import android.view.View;
-
 import java.util.ArrayList;
 
-class StateButton extends Butt {
+class StateButton extends Button {
 
     ArrayList<AbstractObject> state;
 
-    StateButton(int drawable){
+    StateButton(int drawable, String tag){
+        super(drawable, tag);
         state = new ArrayList<>();
-        super.setImageResource(drawable);
-        super.setOnClickListener(new ButtonListener());
     }
     public void action(){
-        if(Button.pressed.getTag().toString().equals("save")){
+        if(PressedButton.pressed.getTag().toString().equals("save")){
             state = Grid.setState();
-            Button.unpress();
+            PressedButton.unpress();
             MainActivity.vibrate(100);
         } else {
             Grid.loadState(state);

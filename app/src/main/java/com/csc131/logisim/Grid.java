@@ -83,10 +83,19 @@ public class Grid {
         for(int i=0; i<gates.size(); i++){
             MainActivity.cl.addView(gates.get(i).iv);
         }
+        drawAllWires();
     }
 
     static ArrayList<AbstractObject> setState(){
         return gates;
+    }
+
+    static void drawAllWires(){
+        for(int i=0; i<gates.size(); i++){
+            for(int j=0; j<gates.get(i).inputs.size(); j++){
+                Drawer.drawWire(gates.get(i),gates.get(i).inputs.get(j));
+            }
+        }
     }
 }
 
