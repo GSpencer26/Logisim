@@ -66,11 +66,27 @@ public class Grid {
     }
 
     static void resetGrid(){
+        clearLayout();
+        gates = new ArrayList<>();
+        Drawer.draw();
+    }
+
+    private static void clearLayout(){
         for(int i=0; i<gates.size(); i++){
             MainActivity.cl.removeView(gates.get(i).iv);
         }
-        gates = new ArrayList<>();
-        Drawer.draw();
+    }
+
+    static void loadState(ArrayList<AbstractObject> state){
+        clearLayout();
+        gates = state;
+        for(int i=0; i<gates.size(); i++){
+            MainActivity.cl.addView(gates.get(i).iv);
+        }
+    }
+
+    static ArrayList<AbstractObject> setState(){
+        return gates;
     }
 }
 

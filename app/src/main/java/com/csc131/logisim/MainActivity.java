@@ -9,6 +9,8 @@ import android.view.Display;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -32,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         grid =  findViewById(R.id.grid);
+        addButtons();
         Drawer.set(size, grid);
         Drawer.draw();
+
     }
 
     public void buttonClick(View v){
@@ -46,8 +50,11 @@ public class MainActivity extends AppCompatActivity {
         Grid.resetGrid();
     }
 
-    public void addButtons(View v){
-        HorizontalScrollView toolbar =  findViewById(R.id.toolbar);
+    public void addButtons(){
+        LinearLayout toolbar = findViewById(R.id.toolbar);
+        toolbar.addView(new StateButton(R.drawable.aletter));
+        toolbar.addView(new StateButton(R.drawable.bletter));
+        toolbar.addView(new StateButton(R.drawable.cletter));
     }
 
     static public void vibrate(long duration){

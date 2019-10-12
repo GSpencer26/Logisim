@@ -55,12 +55,6 @@ class ButtonAction {
                 break;
             case "save":
                 break;
-            case "aletter":
-                break;
-            case "bletter":
-                break;
-            case "cletter":
-                break;
         }
         Button.unpress();
     }

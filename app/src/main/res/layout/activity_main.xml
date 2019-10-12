@@ -14,7 +14,7 @@
         android:id="@+id/GridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/scollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,7 +27,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <HorizontalScrollView
-        android:id="@+id/toolbar"
+        android:id="@+id/scollView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ButtonSize"
         android:overScrollMode="always"
@@ -35,6 +35,7 @@
         tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
+            android:id="@+id/toolbar"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/ButtonSize">
 
@@ -51,78 +52,79 @@
 
             <ImageButton
                 android:id="@+id/and"
-                android:tag="and"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="and"
                 app:srcCompat="@drawable/andgate" />
 
             <ImageButton
                 android:id="@+id/or"
-                android:tag="or"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="or"
                 app:srcCompat="@drawable/orgate" />
 
             <ImageButton
                 android:id="@+id/not"
-                android:tag="not"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="not"
                 app:srcCompat="@drawable/notgate" />
 
             <ImageButton
                 android:id="@+id/led"
-                android:tag="led"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="led"
                 app:srcCompat="@drawable/lightbulboff" />
 
             <ImageButton
                 android:id="@+id/toggle"
-                android:tag="toggle"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="toggle"
                 app:srcCompat="@drawable/toggleswitchoff" />
+
             <ImageButton
                 android:id="@+id/wire"
-                android:tag="wire"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="wire"
                 app:srcCompat="@drawable/wireoff" />
 
             <ImageButton
                 android:id="@+id/trash"
-                android:tag="trash"
                 android:layout_width="@dimen/ButtonSize"
                 android:layout_height="@dimen/ButtonSize"
                 android:layout_weight="1"
-                android:onClick="buttonClick"
                 android:background="@drawable/border"
+                android:onClick="buttonClick"
                 android:scaleType="fitCenter"
+                android:tag="trash"
                 app:srcCompat="@drawable/trash" />
 
             <ImageButton
@@ -135,39 +137,6 @@
                 android:scaleType="fitCenter"
                 android:tag="save"
                 app:srcCompat="@drawable/save" />
-
-            <ImageButton
-                android:id="@+id/aletter"
-                android:layout_width="@dimen/ButtonSize"
-                android:layout_height="@dimen/ButtonSize"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:onClick="buttonClick"
-                android:scaleType="fitCenter"
-                android:tag="state"
-                app:srcCompat="@drawable/aletter" />
-
-            <ImageButton
-                android:id="@+id/bletter"
-                android:layout_width="@dimen/ButtonSize"
-                android:layout_height="@dimen/ButtonSize"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:onClick="state"
-                android:scaleType="fitCenter"
-                android:tag="bletter"
-                app:srcCompat="@drawable/bletter" />
-
-            <ImageButton
-                android:id="@+id/cletter"
-                android:layout_width="@dimen/ButtonSize"
-                android:layout_height="@dimen/ButtonSize"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:onClick="state"
-                android:scaleType="fitCenter"
-                android:tag="cletter"
-                app:srcCompat="@drawable/cletter" />
 
         </LinearLayout>
     </HorizontalScrollView>
