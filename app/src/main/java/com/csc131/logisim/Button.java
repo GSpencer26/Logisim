@@ -1,5 +1,6 @@
 package com.csc131.logisim;
 
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
@@ -16,6 +17,7 @@ abstract class Button extends ImageButton {
 
     }
 
-    abstract void action();
+    abstract void press();
 
+    abstract <T extends AbstractObject> void action(T a, MotionEvent event);
 }

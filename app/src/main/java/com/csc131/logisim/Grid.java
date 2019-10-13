@@ -1,10 +1,6 @@
 package com.csc131.logisim;
 
 import android.app.Activity;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.GenericArrayType;
-import java.net.ConnectException;
 import java.util.ArrayList;
 
 public class Grid {

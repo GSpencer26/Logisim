@@ -1,5 +1,7 @@
 package com.csc131.logisim;
 
+import android.view.MotionEvent;
+
 import java.util.ArrayList;
 
 class StateButton extends Button {
@@ -10,7 +12,7 @@ class StateButton extends Button {
         super(drawable, tag);
         state = new ArrayList<>();
     }
-    public void action(){
+    public void press(){
         if(PressedButton.pressed.getTag().toString().equals("save")){
             state = Grid.setState();
             PressedButton.unpress();
@@ -20,4 +22,7 @@ class StateButton extends Button {
             MainActivity.vibrate(200);
         }
     }
+
+    <T extends AbstractObject> void action(T a, MotionEvent event){}
+
 }

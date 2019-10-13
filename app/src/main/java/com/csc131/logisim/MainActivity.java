@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         size.y = size.y - (int)getResources().getDimension(R.dimen.ButtonSize);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         grid =  findViewById(R.id.grid);
+        grid.setOnTouchListener(new GridListener());
         addButtons();
         Drawer.set(size, grid);
         Drawer.draw();
