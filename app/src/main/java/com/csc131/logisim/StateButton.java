@@ -13,7 +13,7 @@ class StateButton extends Button {
         state = new ArrayList<>();
     }
     public void press(){
-        if(PressedButton.pressed.getTag().toString().equals("save")){
+        if(PressedButton.pressed !=null && PressedButton.pressed.getTag().toString().equals("save")){
             state = Grid.setState();
             PressedButton.unpress();
             MainActivity.vibrate(100);

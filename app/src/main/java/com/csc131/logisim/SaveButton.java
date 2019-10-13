@@ -1,7 +1,5 @@
 package com.csc131.logisim;
 
-import android.view.MotionEvent;
-
 class SaveButton extends Button {
 
     SaveButton(int drawable,String tag){
@@ -12,7 +10,5 @@ class SaveButton extends Button {
         PressedButton.press(this);
         MainActivity.vibrate(50);
     }
-
-    <T extends AbstractObject> void action(T a, MotionEvent event){}
 
 }

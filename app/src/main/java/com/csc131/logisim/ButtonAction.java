@@ -6,7 +6,7 @@ import android.view.View;
 class ButtonAction {
 
     static void action(MotionEvent motionEvent){
-        final Button pressed = PressedButton.pressed;
+        final View pressed = PressedButton.pressed;
         final int x = Drawer.closestBlock(motionEvent.getX());
         final int y = Drawer.closestBlock(motionEvent.getY());
         MainActivity.vibrate(50);
