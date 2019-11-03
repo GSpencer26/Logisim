@@ -7,9 +7,11 @@ class ButtonAction {
 
     static void action(MotionEvent motionEvent){
         final View pressed = PressedButton.pressed;
-        final int x = Drawer.closestBlock(motionEvent.getX());
-        final int y = Drawer.closestBlock(motionEvent.getY());
+        final int x = Drawer.cellCenter(motionEvent.getX());
+        final int y = Drawer.cellCenter(motionEvent.getY());
         MainActivity.vibrate(50);
+
+        //Determine which button is pressed and do action
         switch(pressed.getTag().toString()){
             case "and":
                 Grid.addGate(new AndGate(x,y));
@@ -30,13 +32,14 @@ class ButtonAction {
                 if(Grid.isGate(x,y)<0){
                     return;
                 }
+                //Set the grid to listen for a second input
                 MainActivity.grid.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent2) {
-                        int x2 = Drawer.closestBlock(motionEvent2.getX());
-                        int y2 = Drawer.closestBlock(motionEvent2.getY());
+                        int x2 = Drawer.cellCenter(motionEvent2.getX());
+                        int y2 = Drawer.cellCenter(motionEvent2.getY());
                         if(motionEvent2.getAction() == motionEvent2.ACTION_DOWN
-                            && Grid.isGate(Drawer.closestBlock(x2), Drawer.closestBlock(y2))>=0){
+                            && Grid.isGate(Drawer.cellCenter(x2), Drawer.cellCenter(y2))>=0){
                             if(x==x2 && y==y2) return true;
                             MainActivity.vibrate(50);
                             Drawer.drawWire(x,y,x2,y2);
@@ -52,8 +55,6 @@ class ButtonAction {
                 return;
             case "trash":
                 Grid.removeGate(x,y);
-                break;
-            case "save":
                 break;
         }
         PressedButton.unpress();

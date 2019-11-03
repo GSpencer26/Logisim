@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
-class StateButton extends Button {
+class StateButton extends AbstractButton {
 
     ArrayList<AbstractObject> state;
 
@@ -14,12 +14,12 @@ class StateButton extends Button {
     }
     public void press(){
         if(PressedButton.pressed !=null && PressedButton.pressed.getTag().toString().equals("save")){
-            state = Grid.setState();
-            PressedButton.unpress();
-            MainActivity.vibrate(100);
+            state = Grid.gates;                 //Copy gates to the state if save is selected
+            PressedButton.unpress();            //Unpress the save button
+            MainActivity.vibrate(100);  //Slightly longer feedback
         } else {
-            Grid.loadState(state);
-            MainActivity.vibrate(200);
+            Grid.loadState(state);              //Load the current state if anything but state is selected
+            MainActivity.vibrate(200);  //Long feedback
         }
     }
 
