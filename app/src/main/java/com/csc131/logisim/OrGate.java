@@ -7,7 +7,7 @@ class OrGate extends AbstractObject {
 
     }
 
-    @Override
+    //Computes OR operator on all finite inputs
     boolean function() {
         for(int i=0; i<inputs.size(); i++){
             if(inputs.get(i).function()){
@@ -17,6 +17,7 @@ class OrGate extends AbstractObject {
         return false;
     }
 
+    //Rotate the imageView when clicked and no button is selected
     void gridAction(){
         super.rotate();
     }

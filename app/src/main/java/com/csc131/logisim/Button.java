@@ -1,23 +1,14 @@
 package com.csc131.logisim;
 
-import android.view.MotionEvent;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-
-abstract class Button extends ImageButton {
+class Button extends AbstractButton {
 
     Button(int drawable, String tag){
-        super(MainActivity.activity);
-        super.setImageResource(drawable);
-        super.setTag(tag);
-        super.setLayoutParams(new ViewGroup.LayoutParams(250, 250));
-        super.setScaleType(ScaleType.FIT_CENTER);
-        super.setBackgroundResource(R.drawable.border);
-        super.setOnClickListener(new ButtonListener());
-
+        super(drawable, tag);
     }
 
-    abstract void press();
-
-    abstract <T extends AbstractObject> void action(T a, MotionEvent event);
+    //Add this button to PressedButton
+    void press(){
+        PressedButton.press(this);
+        MainActivity.vibrate(50);
+    }
 }

@@ -1,20 +1,10 @@
 package com.csc131.logisim;
 
-import android.app.Activity;
 import java.util.ArrayList;
 
 public class Grid {
 
-    static private ArrayList<AbstractObject> gates;
-    static Activity activity;
-    static int width, height;
-
-    static void initialize(int w, int h, Activity a) {
-        width = w;
-        height = h;
-        activity = a;
-        gates = new ArrayList<>();
-    }
+    static ArrayList<AbstractObject> gates = new ArrayList<>();
 
     static AbstractObject getGate(int x, int y) {
         int gatePosition = isGate(x,y);
@@ -28,17 +18,19 @@ public class Grid {
         return null;
     }
 
+    //Check if there is a gate at location and return position in array
     static int isGate(int x, int y) {
         for(int i=0; i<gates.size(); i++){
             if(gates.get(i).xposition == x && gates.get(i).yposition == y)
                 return i;
         }
-        return -1;
+        return -1; //return -1 if none found
     }
 
+    //Adds gate to ArrayList and the Grid layout
     static void addGate(AbstractObject a) {
-        int x = Drawer.closestBlock(a.xposition);
-        int y = Drawer.closestBlock(a.yposition);
+        int x = Drawer.cellCenter(a.xposition);
+        int y = Drawer.cellCenter(a.yposition);
         int gateNum = isGate(x,y);
         if (gateNum==-1) {
             gates.add(a);
@@ -50,48 +42,33 @@ public class Grid {
         int gateNum = isGate(x,y);
         if(gateNum>=0) {
             MainActivity.cl.removeView(gates.get(gateNum).iv);
-            gates.remove(gateNum);
-            Drawer.draw();
-            Lightbulb.update();
-        }
-        for(int i=0; i<gates.size(); i++){
-            for(int j=0; j<gates.get(i).inputs.size(); j++){
-                AbstractObject.connectGates(gates.get(i),gates.get(i).inputs.get(j));
-            }
+            gates.remove(gateNum);      //Remove gate from grid and ImageView
+            Drawer.draw();              //Redraw the grid to remove unused wires
+            Lightbulb.update();         //Update the circuit
         }
     }
 
+    //Delete all gates
     static void resetGrid(){
         clearLayout();
         gates = new ArrayList<>();
         Drawer.draw();
     }
 
+    //Remove all gates from the grid layout
     private static void clearLayout(){
-        for(int i=0; i<gates.size(); i++){
-            MainActivity.cl.removeView(gates.get(i).iv);
+        for(AbstractObject g : gates){
+            MainActivity.cl.removeView(g.iv);
         }
     }
 
     static void loadState(ArrayList<AbstractObject> state){
         clearLayout();
         gates = state;
-        for(int i=0; i<gates.size(); i++){
-            MainActivity.cl.addView(gates.get(i).iv);
+        for(AbstractObject g : gates){
+            MainActivity.cl.addView(g.iv);
         }
-        drawAllWires();
-    }
-
-    static ArrayList<AbstractObject> setState(){
-        return gates;
-    }
-
-    static void drawAllWires(){
-        for(int i=0; i<gates.size(); i++){
-            for(int j=0; j<gates.get(i).inputs.size(); j++){
-                Drawer.drawWire(gates.get(i),gates.get(i).inputs.get(j));
-            }
-        }
+        Drawer.drawAllWires();
     }
 }
 

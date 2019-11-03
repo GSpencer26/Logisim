@@ -10,11 +10,12 @@ class Toggle extends AbstractObject {
         toggle();
     }
 
-    @Override
+    //Return the state. No function since direct input.
     boolean function() {
         return state;
     }
 
+    //Toggle input state on touch
     void toggle(){
         state = !state;
         if(state)

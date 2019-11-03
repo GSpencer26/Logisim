@@ -30,7 +30,11 @@
         android:id="@+id/scollView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ButtonSize"
+        android:fadeScrollbars="true"
         android:overScrollMode="always"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="insideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="16dp">
 

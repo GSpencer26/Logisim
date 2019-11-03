@@ -7,6 +7,7 @@ class AndGate extends AbstractObject {
         super.iv.setImageResource(R.drawable.andgate);
     }
 
+    //Computes AND operator on all finite inputs
     boolean function() {
         if(inputs.size()==0) return false;
         for(int i=0; i<inputs.size(); i++){
@@ -17,6 +18,7 @@ class AndGate extends AbstractObject {
         return true;
     }
 
+    //Rotate the imageView when clicked and no button is selected
     void gridAction(){
         super.rotate();
     }

@@ -4,8 +4,9 @@ import android.view.View;
 
 public class ButtonListener implements View.OnClickListener {
 
+    //Do press action when clicked
     public void onClick(View v){
-        Button button = (Button) v;
+        AbstractButton button = (AbstractButton) v;
         button.press();
     }
 

@@ -2,17 +2,17 @@ package com.csc131.logisim;
 
 class PressedButton {
 
-    static Button pressed;
+    static AbstractButton pressed;
 
-    static void press(Button button) {
-        if(button.equals(pressed)){
+    static void press(AbstractButton button) {
+        if(button.equals(pressed)){ //If button already selected, deselect
             unpress();
             return;
         }
-        if (pressed != null)
-            unpress();
-        pressed = button;
+        unpress();
+        pressed = button;           //Set selected button
         scaleButton(.9f);
+        MainActivity.grid.setOnTouchListener(new GridListener());
     }
 
     static void unpress() {
@@ -20,9 +20,12 @@ class PressedButton {
         pressed = null;
     }
 
+    //Shrink/expand button to show which is selected
     static private void scaleButton(float size){
-        pressed.setScaleX(size);
-        pressed.setScaleY(size);
+        if(pressed!=null) {
+            pressed.setScaleX(size);
+            pressed.setScaleY(size);
+        }
     }
 
 }
